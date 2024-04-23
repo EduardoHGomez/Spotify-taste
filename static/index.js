@@ -8,8 +8,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ------- Own code ------
 
-function signInFunction() {
-    alert('Pressed');
+async function signInFunction() {
+    // Examples
+    const codeVerifier  = generateRandomString(64);
+    const hashed = await sha256(codeVerifier)
+    const codeChallenge = base64encode(hashed);
+
+    const clientId = '8d6a62d1e85e412d9f237a08f9ee13ee';
+    const redirectUri = 'http://localhost:3000/redirect';
+
+    const scope = 'user-read-private user-read-email';
+    const authUrl = new URL("https://accounts.spotify.com/authorize")
+
+    // generated in the previous step
+    window.localStorage.setItem('code_verifier', codeVerifier);
+
+    const params =  {
+    response_type: 'code',
+    client_id: clientId,
+    scope,
+    code_challenge_method: 'S256',
+    code_challenge: codeChallenge,
+    redirect_uri: redirectUri,
+    }
+
+    authUrl.search = new URLSearchParams(params).toString();
+    window.location.href = authUrl.toString();
+
 }
 
 // --------------------
@@ -35,13 +60,6 @@ const base64encode = (input) => {
     .replace(/\+/g, '-')
     .replace(/\//g, '_');
 }
-
-
-// Examples
-const codeVerifier  = generateRandomString(64);
-const hashed = await sha256(codeVerifier)
-const codeChallenge = base64encode(hashed);
-
 
 
 
