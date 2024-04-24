@@ -7,10 +7,9 @@ let code = urlParams.get('code');
 
 // ------------ Redirect functions -------------------
 
-console.log(code);
-console.log(localStorage.access_token);
 // After the user is redirected once accepted the petition, it is given back to code
 const getToken = async code => {
+	const codeVerifier = localStorage.getItem('code_verifier')
 
     const url = `https://accounts.spotify.com/api/token`;
 
@@ -32,23 +31,24 @@ const getToken = async code => {
 
     }
 
-  const body = await fetch(url, payload);
-  const response = await body.json();
+    const body = await fetch(url, payload);
+    const response = await body.json();
 
-  localStorage.setItem('access_token', response.access_token);
+    localStorage.setItem('access_token', response.access_token);
+    window.location.href = 'http://localhost:3000';
 
 }
 
 
-if (code) {
-    localStorage.setItem("code_redirect", code);
+function main() {
 
-    // Check if token exists
-    if (localStorage.access_token) {
-        window.location.href = 'http://localhost:3000';
-    } else {
-        getToken(code);
-    }
+	if (code) {
+		// This statement is only entered after being redirected from Spotify
+		localStorage.setItem("code_redirect", code);
+		getToken(code);
+	}
+
+
 }
 
 
@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function signInFunction() {
     // Examples
     const codeVerifier  = generateRandomString(64);
+	console.log(codeVerifier);
     const hashed = await sha256(codeVerifier)
     const codeChallenge = base64encode(hashed);
 
@@ -82,7 +83,7 @@ async function signInFunction() {
     const authUrl = new URL("https://accounts.spotify.com/authorize")
 
     // generated in the previous step
-    window.localStorage.setItem('code_verifier', codeVerifier);
+    localStorage.setItem('code_verifier', codeVerifier);
 
     const params =  {
     response_type: 'code',
@@ -140,3 +141,6 @@ async function getProfile(accessToken) {
   const data = await response.json();
 
 }
+
+
+main();
