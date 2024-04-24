@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         getProfile();
     });
 
+    document.querySelector('#getTracks').addEventListener('click', () => {
+        getTracks();
+    });
+
 })
 
 // ------- Own code ------
@@ -79,7 +83,7 @@ async function signInFunction() {
     const codeChallenge = base64encode(hashed);
 
 
-    const scope = 'user-read-private user-read-email';
+    const scope = 'user-read-private user-read-email user-top-read';
     const authUrl = new URL("https://accounts.spotify.com/authorize")
 
     // generated in the previous step
@@ -126,19 +130,20 @@ const base64encode = (input) => {
 
 
 // Example of usage
-async function getProfile(accessToken) {
+async function getProfile() {
+	const accessToken = localStorage.getItem('access_token');
 
-    console.log(localStorage.getItem('access_token'));
+  	const response = await fetch('https://api.spotify.com/v1/me', {
+	headers: {
+		Authorization: 'Bearer ' + localStorage.getItem('access_token')
+		}
+	});
 
-  const response = await fetch('https://api.spotify.com/v1/me', {
-    headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('access_token')
-    }
-  });
+	console.log(response);
 
-  console.log(response);
+  	const data = await response.json();
 
-  const data = await response.json();
+	console.log(data);
 
 }
 
