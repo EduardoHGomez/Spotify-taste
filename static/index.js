@@ -78,12 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
 async function signInFunction() {
     // Examples
     const codeVerifier  = generateRandomString(64);
-	console.log(codeVerifier);
     const hashed = await sha256(codeVerifier)
     const codeChallenge = base64encode(hashed);
 
 
-    const scope = 'user-read-private user-read-email user-top-read';
+    const scope = 'user-read-private user-read-email user-top-read user-top-read';
     const authUrl = new URL("https://accounts.spotify.com/authorize")
 
     // generated in the previous step

@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Taste</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>We'll check your music taste</h1>
 
-    <div>
+   <!-- Canvas -->
+<canvas class="orb-canvas"></canvas>
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+    <!-- Title -->
+    <h1 class="overlay__title">
+        Spotify music taste check     
+        <span class="text-gradient">generative</span>
+    </h1>
+    <!-- Description -->
+    <p class="overlay__description">
+        With this app, you will get a basic understanding
+      <strong></strong>
+    </p>
+    <!-- Buttons -->
+    <div class="overlay__btns">
 
-        <div>
-            <p>First, we will need to sign in from Spotify</p>
-            <button id="signInButton">Sign in</button>
-            <button id="getProfileButton">Get profile</button>
-            <button id="getTracks">Get tracks</button>
-        </div>
+      <button id="signInButton" class="overlay__btn overlay__btn--transparent">
+        <a target="_blank">
+          Sign In
+        </a>
+      </button>
+
+      <button id="getProfileButton" class="overlay__btn overlay__btn--colors">
+        <span></span>
+        <span class="overlay__btn-emoji">🎨</span>
+      </button>
+
+      <button id="getTracks">Get tracks</button>
+
 
     </div>
+  </div>
+</div> 
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='signIn.css') }}">
+    <script type="module" src="{{url_for('static', filename='signIn.js')}}"></script>
 
     <script src="{{url_for('static', filename='index.js')}}"></script>
     <script src="{{url_for('static', filename='tracks.js')}}"></script>
+    
 </body>
 </html>
