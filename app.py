@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -6,6 +6,12 @@ app = Flask(__name__)
 def redirect():
     return "Redirect link"
 
+@app.route('/analize', methods=['POST'])
+def analize():
+    data = request.get_json()  # Parse the JSON data sent from the client
+    array_data = data['array']  # Access the array from the parsed JSON
+    print("Received array:", array_data)
+    return "hello"
 
 @app.route("/")
 def home():
