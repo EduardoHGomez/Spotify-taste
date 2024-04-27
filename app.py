@@ -8,9 +8,12 @@ def redirect():
 
 @app.route('/analize', methods=['POST'])
 def analize():
-    data = request.get_json()  # Parse the JSON data sent from the client
-    array_data = data['array']  # Access the array from the parsed JSON
-    print("Received array:", array_data)
+    data = request.get_json()  # Parse JSON
+    tracks = data['array']  # Get array
+
+    # Do the analysis
+    print(tracks)
+
     return "hello"
 
 @app.route("/")

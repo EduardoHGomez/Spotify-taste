@@ -11,7 +11,10 @@ async function getTracks() {
 
   	let data = await response.json();
     data.items.forEach((item) => {
-		tracks.push(item);
+		tracks.push({
+			'name': item.name,
+			'image': item.album.images[0].url
+		});
     })
 
 	// console.log(data.next);
@@ -31,7 +34,7 @@ async function getTracks() {
 
 		data = await response.json();
 		data.items.forEach((item) => {
-			tracks.push(item);
+			tracks.push(item.name);
 		})
 
 	}
