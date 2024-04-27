@@ -10,10 +10,12 @@ async function getTracks() {
 	});
 
   	let data = await response.json();
+	console.log(data);
     data.items.forEach((item) => {
 		tracks.push({
 			'name': item.name,
-			'image': item.album.images[0].url
+			'image': item.album.images[0].url,
+			'track_id': item.id
 		});
     })
 
@@ -47,7 +49,8 @@ async function getTracks() {
 	fetch(url, {
     method: 'POST', // Specify the method
     headers: {
-        'Content-Type': 'application/json' // Specify the content type
+        'Content-Type': 'application/json',
+		'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     },
     	body: JSON.stringify({ array: tracks}) // Send the array as part of an object
 	})

@@ -1,3 +1,8 @@
+import pandas as pd
+import numpy as np
+
+from analize import getUserMetrics
+
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -8,12 +13,14 @@ def redirect():
 
 @app.route('/analize', methods=['POST'])
 def analize():
+    auth = request.headers.get('Authorization')
+
     data = request.get_json()  # Parse JSON
     tracks = data['array']  # Get array
 
-    # Do the analysis
-    print(tracks)
+    getUserMetrics(tracks, auth)
 
+    # Do the analysis
     return "hello"
 
 @app.route("/")
