@@ -62,6 +62,8 @@ async function getTracks() {
 	.then(response => response.json())
 	.then(result => {
 		console.log(result);
+		localStorage.setItem('results', JSON.stringify(result));
+		window.location.href = window.location.href + 'results';
 	})
 
 	console.log("here");

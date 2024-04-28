@@ -3,7 +3,7 @@ import numpy as np
 
 from analize import getUserMetrics
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 
 app = Flask(__name__)
 
@@ -23,6 +23,11 @@ def analize():
     print(result)
 
     return jsonify(result)
+
+
+@app.route("/results", methods=['GET'])
+def results():
+    return render_template('results.html')
 
 @app.route("/")
 def home():
