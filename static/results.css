@@ -8,13 +8,11 @@ body {
     background-repeat: no-repeat;
 
     background-size: cover; /* Cover the entire viewport */
-    height: 100vh; /* Ensure body fills the viewport vertically */
     margin: 0; /* Remove default margin */
 
     font-family: "Roboto", sans-serif;
     font-style: normal;
     color: #282828;
-
 }
 
 
@@ -27,6 +25,7 @@ body {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 8px;
+    height: 100vh; /* Ensure body fills the viewport vertically */
 }
 
 .container-top {
@@ -70,15 +69,26 @@ body {
 
 .container-middle {
     grid-area: container-middle;
-    outline: 1px solid black;
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
 }
 
 .container-middle h1 {
-    font-weight: 800;
+    font-weight: 700;
+    text-align: center;
 }
+
+.middle_text {
+    margin-right: 5vh;
+    margin-left: 5vh;
+    font-size: 1.2em;
+}
+
+.middle_text div{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .container-right {
     grid-area: container-right;
