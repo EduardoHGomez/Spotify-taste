@@ -44,17 +44,29 @@
 		</div>
 	</div> 
 
+
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<dotlottie-player src="https://lottie.host/a26b823a-c0fc-4418-b0c2-85efb72c6739/iZhESTjzn1.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+		</div>
+
+	</div>
+
+
+
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='signIn.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='modal.css') }}">
 
     <script type="module" src="{{url_for('static', filename='signIn.js')}}"></script>
-
     <script src="{{url_for('static', filename='index.js')}}"></script>
     <script src="{{url_for('static', filename='tracks.js')}}"></script>
+    <script src="{{url_for('static', filename='modalIndex.js')}}"></script>
 
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player src="https://lottie.host/a26b823a-c0fc-4418-b0c2-85efb72c6739/iZhESTjzn1.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
 
     
 </body>

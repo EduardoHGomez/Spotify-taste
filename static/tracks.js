@@ -3,6 +3,11 @@ let tracks = []; // Store the tracks
 
 async function getTracks() {
 
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    modal.style.display = "block";
+
   	let response = await fetch('https://api.spotify.com/v1/me/top/tracks', {
 	headers: {
 		Authorization: 'Bearer ' + localStorage.getItem('access_token'),
@@ -46,7 +51,6 @@ async function getTracks() {
 
 	}
 
-	console.log("here");
 
 	// After this, send the tracks to the server
 	const url = 'http://localhost:3000/analize'
