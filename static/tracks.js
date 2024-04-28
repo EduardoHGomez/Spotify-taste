@@ -59,7 +59,10 @@ async function getTracks() {
     },
     	body: JSON.stringify({ array: tracks}) // Send the array as part of an object
 	})
-	.then(response => console.log(response));
+	.then(response => response.json())
+	.then(result => {
+		console.log(result);
+	})
 
 	console.log("here");
 }

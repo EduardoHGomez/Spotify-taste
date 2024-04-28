@@ -18,10 +18,11 @@ def analize():
     data = request.get_json()  # Parse JSON
     tracks = data['array']  # Get array
 
-    getUserMetrics(tracks, auth)
-
     # Do the analysis
-    return "hola"
+    result = getUserMetrics(tracks, auth)
+    print(result)
+
+    return jsonify(result)
 
 @app.route("/")
 def home():

@@ -48,11 +48,65 @@ def getUserMetrics(data, auth):
 
     # Hacer un join
     merged = pd.merge(data_df, tracks_df, on='id', how='inner')
-    main_analysis(merged)
+    result = main_analysis(merged)
 
-    return
+    return result
 
 # Esta funcion recibe el dataframe del usuario listo para analizar con el que detallamos en jupyter
 def main_analysis(user_df):
-    print(user_df)
-    user_df.to_csv('user_df.csv', index=False)  
+
+    # ---- A partir de aqui, analizaremos algunas columna con base en lo que escucha el usuario ----
+
+    # Obtener el danceability promedio
+    avg_danceability_user = user_df['danceability'].mean()
+    print("Danceability", avg_danceability_user)
+
+    # Obtener el energy promedio
+    avg_energy_user = user_df['energy'].mean()
+    print("Energy", avg_energy_user)
+
+    # Obtener el valence promedio
+    avg_valence_user = user_df['valence'].mean()
+    print("Valence", avg_valence_user)
+
+    # Obtener el loudness promedio
+    avg_loudness_user = user_df['loudness'].mean()
+    print("Loudness", avg_loudness_user )
+
+    
+
+    # ---- Hacer lo mismo que para el usuario pero con las canciones más escuchadas ------------
+
+    df = pd.read_csv('dataset.csv', index_col=0)
+    # Realizar el conteo de las filas con valores nulos
+    df.isnull().sum()
+
+    # Al no ser tantas, podemos eliminar aquellas filas con valores nulos. Usamos In Place
+    df.dropna(inplace = True)
+
+    # Obtener el danceability promedio
+    avg_danceability_spotify = df['danceability'].mean()
+    print("Danceability", avg_danceability_spotify)
+
+    # Obtener el energy promedio
+    avg_energy_spotify = df['energy'].mean()
+    print("Energy", avg_danceability_spotify)
+
+    # Obtener el valence promedio
+    avg_valence_spotify = df['valence'].mean()
+    print("Valence", avg_valence_spotify)
+
+    # Obtener el loudness promedio
+    avg_loudness_spotify = df['loudness'].mean()
+    print("Loudness", avg_loudness_spotify )
+
+    # Crear lista de listas ambos valores 
+    result_list = [['user_stats', avg_danceability_user, avg_energy_user, avg_valence_user, avg_loudness_user], 
+                    ['spotify_stats', avg_danceability_spotify, avg_energy_spotify, avg_valence_spotify, avg_loudness_spotify]]
+    
+    # Crear el dataframe manual
+    result = pd.DataFrame(result_list, columns=['type', 'danceability', 'energy', 'valence', 'loudness'])
+    
+    result = result.to_dict()
+
+    return result
