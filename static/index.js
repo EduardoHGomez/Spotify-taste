@@ -48,6 +48,15 @@ function main() {
 		getToken(code);
 	}
 
+    var btnInicio = document.querySelector('#signInButton');
+    var btnAnalizar = document.querySelector('#getTracks');
+
+    if(localStorage.access_token === undefined) {
+        btnAnalizar.style.display = 'none';
+    } else {
+        btnInicio.style.display = 'none';
+    }
+
 
 }
 
@@ -63,9 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         signInFunction();
     });
 
-    document.querySelector('#getProfileButton').addEventListener('click', () => {
-        getProfile();
-    });
 
     document.querySelector('#getTracks').addEventListener('click', () => {
         getTracks();

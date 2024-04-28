@@ -109,4 +109,11 @@ def main_analysis(user_df):
     
     result = result.to_dict()
 
-    return result
+    user_result = user_df.to_dict()
+
+    both_results = {
+        'result': result,
+        'user_result': user_result
+    }
+
+    return both_results 
