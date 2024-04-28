@@ -35,7 +35,21 @@ const getToken = async code => {
     const response = await body.json();
 
     localStorage.setItem('access_token', response.access_token);
-    window.location.href = 'http://localhost:3000';
+    // Create a URL object based on the current location
+    let currentUrl = new URL(window.location.href);
+
+    // Remove everything after '/code' (including '/code')
+    let basePath = currentUrl.pathname.split('/code')[0];
+
+    // Set the new pathname to the URL object
+    currentUrl.pathname = basePath;
+
+    // Clear any query parameters
+    currentUrl.search = '';
+
+    // Navigate to the new URL
+    window.location.href = currentUrl.href;
+
 
 }
 

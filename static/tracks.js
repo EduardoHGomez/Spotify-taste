@@ -54,7 +54,7 @@ async function getTracks() {
 
 
 	// After this, send the tracks to the server
-	const url = 'http://localhost:3000/analize'
+	const url = window.location.href + 'analize';
 
 	fetch(url, {
     method: 'POST', // Specify the method
