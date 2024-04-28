@@ -21,7 +21,7 @@ def analize():
     getUserMetrics(tracks, auth)
 
     # Do the analysis
-    return "hello"
+    return "hola"
 
 @app.route("/")
 def home():

@@ -10,12 +10,12 @@ async function getTracks() {
 	});
 
   	let data = await response.json();
-	console.log(data);
     data.items.forEach((item) => {
 		tracks.push({
 			'name': item.name,
 			'image': item.album.images[0].url,
-			'track_id': item.id
+			'id': item.id,
+			'artist_name': item.artists[0].name
 		});
     })
 
@@ -36,7 +36,12 @@ async function getTracks() {
 
 		data = await response.json();
 		data.items.forEach((item) => {
-			tracks.push(item.name);
+			tracks.push({
+				'name': item.name,
+				'image': item.album.images[0].url,
+				'id': item.id,
+				'artist_name': item.artists[0].name
+			});
 		})
 
 	}
