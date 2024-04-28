@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -10,6 +11,10 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    color: #282828;
+    font-weight: 700;
 }
 
 /* Modal Content/Box */

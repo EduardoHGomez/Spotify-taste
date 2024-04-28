@@ -54,7 +54,7 @@ function main() {
     if(localStorage.access_token === undefined) {
         btnAnalizar.style.display = 'none';
     } else {
-        btnInicio.style.display = 'none';
+        //btnInicio.style.display = 'none';
     }
 
 

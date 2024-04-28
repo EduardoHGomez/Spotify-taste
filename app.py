@@ -20,7 +20,6 @@ def analize():
 
     # Do the analysis
     result = getUserMetrics(tracks, auth)
-    print(result)
 
     return jsonify(result)
 

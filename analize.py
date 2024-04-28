@@ -109,7 +109,8 @@ def main_analysis(user_df):
     
     result = result.to_dict()
 
-    user_result = user_df.to_dict()
+    user_result = user_df[['name', 'image']]
+    user_result = user_result.to_dict()
 
     both_results = {
         'result': result,

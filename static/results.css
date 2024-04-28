@@ -11,11 +11,36 @@ body {
     height: 100vh; /* Ensure body fills the viewport vertically */
     margin: 0; /* Remove default margin */
 
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    color: #282828;
+
 }
 
 h1 {
-    font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-style: normal;
-    color: #282828;
 }
+
+
+.container {
+    display: grid;
+    grid: 
+    "container-top container-top container-top" auto
+    "container-left" "container-middle" "container-right" 1fr
+    /1fr 2fr 1fr;
+    gap: 8px;
+}
+
+.container-left {
+    grid-area: container-top;
+}
+
+.container-middle {
+    grid-area: container-middle;
+}
+
+.container-right {
+    grid-area: container-right;
+}
+
+
