@@ -25,10 +25,30 @@ h1 {
 .container {
     display: grid;
     grid: 
-    "container-top container-top container-top" auto
+    "container-top container-top container-top" 30%
     "container-left" "container-middle" "container-right" 1fr
-    /1fr 2fr 1fr;
+    / 1fr 2fr 1fr;
     gap: 8px;
+}
+
+.container-top {
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.slide-track {
+    display: flex;
+}
+
+.slide {
+
+}
+
+.container-top img{
+    width: 28vh;
+    box-shadow: 0px 25px 20px 1px rgba(0,0,0,0.1);
 }
 
 .container-left {
@@ -37,6 +57,7 @@ h1 {
 
 .container-middle {
     grid-area: container-middle;
+    outline: 1px solid black;
 }
 
 .container-right {
