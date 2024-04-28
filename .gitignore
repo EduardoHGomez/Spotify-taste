@@ -1,3 +1,5 @@
 venv/
 
 keys
+
+__pychache__/
